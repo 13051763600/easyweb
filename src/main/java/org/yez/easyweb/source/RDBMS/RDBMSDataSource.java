@@ -17,8 +17,7 @@ public class RDBMSDataSource implements DataSource {
     @Override
     public Template getTemplate() {
         try {
-            RDBMSTemplete template = new RDBMSTemplete(pool.getConnection());
-            return template;
+            return new RDBMSTemplete(pool.getConnection());
         } catch (SQLException e) {
             e.printStackTrace();
         }
