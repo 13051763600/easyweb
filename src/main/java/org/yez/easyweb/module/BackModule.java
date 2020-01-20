@@ -1,6 +1,6 @@
 package org.yez.easyweb.module;
 
-import org.json.simple.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 
 public abstract class BackModule {
     

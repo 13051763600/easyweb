@@ -3,10 +3,10 @@ package org.yez.easyweb.source.mybatis;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.ibatis.session.SqlSession;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONAware;
-import org.json.simple.JSONObject;
 import org.yez.easyweb.entity.ApiInfo;
 import org.yez.easyweb.entity.ResultInfo;
 import org.yez.easyweb.source.Template;
@@ -27,11 +27,11 @@ public class MybatisTemplate implements Template {
     }
 
     @Override
-    public JSONAware select(ResultInfo info, Map<String, Object> params, Page page) {
+    public JSON select(ResultInfo info, Map<String, Object> params, Page page) {
         if (null == this.session){
             throw new RuntimeException("Mybatis session can't be null");
         }
-        JSONAware json = null;
+        JSON json = null;
         try{
             if (info.isPaging() && page.getPageSize() > 0) {
                 PageHelper.startPage(page.getPageNum(), page.getPageSize());

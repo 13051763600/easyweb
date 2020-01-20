@@ -12,10 +12,13 @@ public class BootStrap extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(BootStrap.class, args);
     }
-    
-    /** 
-     * 实现SpringBootServletInitializer可以让spring-boot项目在web容器中运行 
-     */  
+
+    /**
+     * 实现SpringBootServletInitializer可以让spring-boot项目在web容器中运行
+     *
+      * @param builder
+     * @return
+     */
     @Override  
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {  
         builder.sources(this.getClass());  

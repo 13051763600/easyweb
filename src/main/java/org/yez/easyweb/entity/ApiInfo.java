@@ -10,7 +10,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
-import org.json.simple.JSONAware;
+import com.alibaba.fastjson.JSON;
 import org.yez.easyweb.cache.redis.NoKeyGeneratorConfigException;
 import org.yez.easyweb.cache.redis.RedisConfiguration;
 import org.yez.easyweb.cache.redis.keygenerator.CacheKeyGenerator;
@@ -137,13 +137,13 @@ public class ApiInfo extends BaseEntity implements Cloneable, Serializable {
         return RedisConfiguration.DEFAULT_KEY;
     }
     
-    public BackModule createBackModul(JSONAware outJson) {
+    public BackModule createBackModul(JSON outJson) {
         if (!StringUtils.isNotEmpty(this.backModul)){
             return new DataModule(outJson, this);
         }
         try {
             Class clz = Class.forName(this.backModul);
-            Constructor constructor = clz.getConstructor(JSONAware.class, ApiInfo.class);
+            Constructor constructor = clz.getConstructor(JSON.class, ApiInfo.class);
             return (BackModule)constructor.newInstance(outJson, this);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

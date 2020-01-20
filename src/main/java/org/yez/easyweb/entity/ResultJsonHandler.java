@@ -2,9 +2,9 @@ package org.yez.easyweb.entity;
 
 import java.util.Map;
 
-import org.json.simple.JSONAware;
+import com.alibaba.fastjson.JSON;
 
 public interface ResultJsonHandler {
 
-    public JSONAware handler(BaseEntity info, JSONAware result, Map<String, Object> params);
+    public JSON handler(BaseEntity info, JSON result, Map<String, Object> params);
 }

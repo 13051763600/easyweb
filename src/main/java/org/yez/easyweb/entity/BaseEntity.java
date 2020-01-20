@@ -3,11 +3,9 @@ package org.yez.easyweb.entity;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.Map;
 
-import org.json.simple.JSONAware;
+import com.alibaba.fastjson.JSON;
 
 public class BaseEntity implements Cloneable, Serializable{
     /**
@@ -35,12 +33,12 @@ public class BaseEntity implements Cloneable, Serializable{
         return null != this.jsonHandler && this.jsonHandler.trim().length() > 0;
     }
     
-    public JSONAware invokeHandler(BaseEntity info, JSONAware result, Map<String, Object> params) {
+    public JSON invokeHandler(BaseEntity info, JSON result, Map<String, Object> params) {
         try {
             Class handlerClass = Class.forName(this.jsonHandler);
             Object handler = handlerClass.newInstance();
-            Method method = handlerClass.getMethod("handler", BaseEntity.class, JSONAware.class, Map.class);
-            result = (JSONAware)method.invoke(handler, info, result, params);
+            Method method = handlerClass.getMethod("handler", BaseEntity.class, JSON.class, Map.class);
+            result = (JSON)method.invoke(handler, info, result, params);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {

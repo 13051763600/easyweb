@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Map;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONAware;
-import org.json.simple.JSONObject;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.yez.easyweb.entity.ApiInfo;
 import org.yez.easyweb.entity.ResultInfo;
 import org.yez.easyweb.source.Template;
@@ -24,7 +24,7 @@ public class RDBMSTemplete implements Template {
     }
 
     @Override
-    public JSONAware select(ResultInfo info, Map<String, Object> params, Page page) {
+    public JSON select(ResultInfo info, Map<String, Object> params, Page page) {
         int totalCount = 0;
         try {
             String sql = info.getSql();
@@ -48,7 +48,7 @@ public class RDBMSTemplete implements Template {
             try (Statement stmt = this.connection.createStatement();
                     ResultSet rs = stmt.executeQuery(sql)){
                 // 创建一个JSONArray对象
-                JSONAware json = null;
+                JSON json = null;
                 // 获得ResultSetMeataData对象
                 ResultSetMetaData rsmd = rs.getMetaData();
                 if (ApiInfo.RETURN_TYPE_LIST.equals(info.getResultType())){

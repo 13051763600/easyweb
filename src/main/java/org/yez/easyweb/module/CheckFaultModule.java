@@ -1,8 +1,8 @@
 package org.yez.easyweb.module;
 
-import java.util.Map;
+import com.alibaba.fastjson.JSONObject;
 
-import org.json.simple.JSONObject;
+import java.util.Map;
 
 public class CheckFaultModule extends BackModule{
 

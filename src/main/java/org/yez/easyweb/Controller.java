@@ -1,6 +1,7 @@
 package org.yez.easyweb;
 
-import org.json.simple.JSONAware;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +38,7 @@ public class Controller {
     }
 
     private BackModule doRender(HttpServletRequest request, String uri, String method) {
-        JSONAware outJson = null;
+        JSON outJson = null;
         IntefaceInfoCache cache = LocalInterfaceInfoCache.getInstant();
         ApiInfo info = cache.getInfo(uri, method);
         if (null == info){

@@ -1,7 +1,7 @@
 package org.yez.easyweb;
 
-import org.json.simple.JSONAware;
-import org.json.simple.JSONObject;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.cache.annotation.Cacheable;
 import org.yez.easyweb.entity.ApiInfo;
 import org.yez.easyweb.entity.BaseEntity;
@@ -47,12 +47,12 @@ public class Executor {
     }
     
     @Cacheable(value="userT", keyGenerator="wiselyKeyGenerator")
-    public JSONAware executeWithCache(){
+    public JSON executeWithCache(){
         return this.execute();
     }
     
-    public JSONAware execute(){
-        JSONAware result = null;
+    public JSON execute(){
+        JSON result = null;
         //当只有一个返回结果时
         if (this.info.getResult().length == 1){
             result = executeResultInfo(this.info.getResult()[0]);
@@ -72,13 +72,13 @@ public class Executor {
         return result;
     }
     
-    private JSONAware executeResultInfo(ResultInfo resultInfo) {
+    private JSON executeResultInfo(ResultInfo resultInfo) {
         Template template = resultInfo.getTemplate();
         Page page = resultInfo.getPageInfo().getPage(this.request);
         if (null == template) {
             throw new RuntimeException("获取名称为" + resultInfo.getDataSourceName() + "的template失败！");
         }
-        JSONAware result = template.select(resultInfo, prepareParams(params, resultInfo), page);
+        JSON result = template.select(resultInfo, prepareParams(params, resultInfo), page);
         if (resultInfo.hasHandler()) {
             result = resultInfo.invokeHandler(resultInfo, result, params);
         }

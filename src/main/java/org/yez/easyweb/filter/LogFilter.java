@@ -11,7 +11,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import org.json.simple.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 import org.yez.easyweb.log.RequestInLogger;
 import org.yez.easyweb.util.Util;
 

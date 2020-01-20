@@ -1,12 +1,12 @@
 package org.yez.easyweb.module;
 
-import org.json.simple.JSONAware;
-import org.json.simple.JSONObject;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.yez.easyweb.entity.ApiInfo;
 
 public class DataModule extends BackModule{
     
-    private JSONAware json;
+    private JSON json;
     private ApiInfo info;
 
     public ApiInfo getInfo() {
@@ -19,17 +19,17 @@ public class DataModule extends BackModule{
     }
 
 
-    public JSONAware getJson() {
+    public JSON getJson() {
         return json;
     }
 
 
-    public void setJson(JSONAware json) {
+    public void setJson(JSON json) {
         this.json = json;
     }
 
 
-    public DataModule(JSONAware outJson, ApiInfo info) {
+    public DataModule(JSON outJson, ApiInfo info) {
         this.setCode("200");
         this.setMessage("成功");
         this.json = outJson;

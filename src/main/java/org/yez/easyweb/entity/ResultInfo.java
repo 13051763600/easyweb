@@ -2,7 +2,7 @@ package org.yez.easyweb.entity;
 
 import java.io.Serializable;
 
-import org.json.simple.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 import org.yez.easyweb.source.DataSource;
 import org.yez.easyweb.source.DataSourceFactory;
 import org.yez.easyweb.source.Template;

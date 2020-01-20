@@ -1,13 +1,13 @@
 package org.yez.easyweb.module;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONAware;
-import org.json.simple.JSONObject;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.yez.easyweb.entity.ApiInfo;
 
 public class BlankModule extends DataModule{
     
-    public BlankModule(JSONAware outJson, ApiInfo info) {
+    public BlankModule(JSON outJson, ApiInfo info) {
         super(outJson, info);
     }
 

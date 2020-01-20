@@ -2,8 +2,8 @@ package org.yez.easyweb.source.redis;
 
 import java.util.Map;
 
-import org.json.simple.JSONAware;
-import org.json.simple.JSONObject;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
 import org.yez.easyweb.entity.ResultInfo;
 import org.yez.easyweb.source.Template;
@@ -22,7 +22,7 @@ public class RedisTemplate implements Template {
     }
 
     @Override
-    public JSONAware select(ResultInfo info, Map<String, Object> params, Page page) {
+    public JSON select(ResultInfo info, Map<String, Object> params, Page page) {
         JSONObject result = new JSONObject();
         String key = (String)params.get(REDIS_REQUEST_KEY);
         if (!StringUtils.isNotEmpty(key)){
