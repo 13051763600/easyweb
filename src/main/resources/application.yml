@@ -1,0 +1,9 @@
+server:
+  port: 13721
+filter:
+  charset: utf-8
+  forceEncoding: utf-8
+  request:
+    forceEncoding: utf-8
+  response:
+    forceEncoding: utf-8
